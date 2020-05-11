@@ -64,7 +64,8 @@ const BasicForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
-                className={touched.name && errors.name ? "border-danger" : null}
+                isInvalid={touched.name && errors.name}
+                isValid={touched.name && !errors.name}
               />
               <ErrorMessage
                 name="name"
@@ -81,9 +82,8 @@ const BasicForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
-                className={
-                  touched.email && errors.email ? "border-danger" : null
-                }
+                isInvalid={touched.email && errors.email}
+                isValid={touched.email && !errors.email}
               />
               <ErrorMessage
                 name="email"
@@ -100,9 +100,8 @@ const BasicForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.phone}
-                className={
-                  touched.phone && errors.phone ? "border-danger" : null
-                }
+                isInvalid={touched.phone && errors.phone}
+                isValid={touched.phone && !errors.phone}
               />
               <ErrorMessage
                 name="phone"
@@ -119,7 +118,8 @@ const BasicForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.blog}
-                className={touched.blog && errors.blog ? "border-danger" : null}
+                isInvalid={touched.blog && errors.blog}
+                isValid={touched.blog && !errors.blog}
               />
               <ErrorMessage
                 name="blog"
