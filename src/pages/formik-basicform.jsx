@@ -33,7 +33,9 @@ const validationSchema = Yup.object().shape({
 const BasicForm = () => {
   return (
     <Container>
-      <h2>Form Validation with Formik, Yup and React-Bootstrap</h2>
+      <h2 style={{ margin: "40px 0 20px" }}>
+        Form Validation with Formik, Yup and React-Bootstrap and Formik-Persist
+      </h2>
       <Formik
         initialValues={{
           name: "",
