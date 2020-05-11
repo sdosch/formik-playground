@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
+import { Persist } from "formik-persist";
 import * as Yup from "yup";
 
 // RegEx for phone number validation
@@ -22,6 +23,11 @@ const validationSchema = Yup.object().shape({
   blog: Yup.string()
     .url("Must enter URL in http://www.example.com format")
     .required("URL required"),
+  color: Yup.string().required("Color is required!"),
+  switch: Yup.boolean().oneOf(
+    [true],
+    "The terms and conditions must be accepted."
+  ),
 });
 
 const BasicForm = () => {
@@ -29,7 +35,14 @@ const BasicForm = () => {
     <Container>
       <h2>Form Validation with Formik, Yup and React-Bootstrap</h2>
       <Formik
-        initialValues={{ name: "", email: "", phone: "", blog: "" }}
+        initialValues={{
+          name: "",
+          email: "",
+          phone: "",
+          blog: "",
+          color: "",
+          switch: false,
+        }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           // When button submits form and form is in the process of submitting, submit button is disabled
@@ -127,25 +140,50 @@ const BasicForm = () => {
                 className="text-danger"
               />
             </Form.Group>
-            <Form.Group controlId="formSelect">
-              <Form.Label>Example select:</Form.Label>
-              <Form.Control as="select">
-                <option selected disabled>
-                  please select...
-                </option>
-                <option>Apples</option>
-                <option>Monkeys</option>
-                <option>Watermelons</option>
+            <Form.Group controlId="formColor">
+              <Form.Label>Color:</Form.Label>
+              <Form.Control
+                as="select"
+                name="color"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.color}
+                isInvalid={touched.color && errors.color}
+                isValid={touched.color && !errors.color}
+              >
+                <option value="" label="Select a color" />
+                <option value="red" label="red" />
+                <option value="blue" label="blue" />
+                <option value="green" label="green" />
               </Form.Control>
+              <ErrorMessage
+                name="color"
+                component={Form.Text}
+                className="text-danger"
+              />
             </Form.Group>
             <Form.Group controlId="formSwitch">
-              <Form.Label>Example switch:</Form.Label>
-              <Form.Switch label="Check this switch" />
+              <Form.Label>Switch:</Form.Label>
+              <Form.Switch
+                name="switch"
+                label="I Agree"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.switch}
+                isInvalid={touched.switch && errors.switch}
+                isValid={touched.switch && !errors.switch}
+              />
+              <ErrorMessage
+                name="switch"
+                component={Form.Text}
+                className="text-danger"
+              />
             </Form.Group>
 
             <Button variant="primary" type="submit" disabled={isSubmitting}>
               Submit
             </Button>
+            <Persist name="signup-form" />
           </Form>
         )}
       </Formik>
