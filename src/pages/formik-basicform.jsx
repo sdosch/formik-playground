@@ -27,7 +27,7 @@ const validationSchema = Yup.object().shape({
 const BasicForm = () => {
   return (
     <Container>
-      <h1>Basic Form</h1>
+      <h2>Form Validation with Formik, Yup and React-Bootstrap</h2>
       <Formik
         initialValues={{ name: "", email: "", phone: "", blog: "" }}
         validationSchema={validationSchema}
