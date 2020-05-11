@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/formik-playground/precache-manifest.63d5f0c3e0d393c58d1a85d78f868786.js"
+  "/formik-playground/precache-manifest.49538fbc8b12474dcd95cffe5f87c89d.js"
 );
 
 self.addEventListener('message', (event) => {
