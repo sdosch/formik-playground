@@ -1,10 +1,15 @@
 import React from "react";
 // import Basic from "./pages/formik-basic";
-import BasicForm from "./pages/formik-basicform";
 import "bootstrap/dist/css/bootstrap.min.css";
+import MultipleDropdown from "./pages/mulitple-dropdown";
 
 function App() {
-  return <BasicForm />;
+  return (
+    <MultipleDropdown
+      options={["Red", "Blue", "Orange", "Pink", "Gold", "Banana"]}
+      initialValue={["Red", "Blue"]}
+    />
+  );
 }
 
 export default App;
