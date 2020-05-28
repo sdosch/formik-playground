@@ -46,7 +46,11 @@ const Navigation = () => {
 
 function App() {
   return (
-    <Router>
+    <Router
+      basename={
+        window.location.hostname === "localhost" ? "" : "/component-incubator"
+      }
+    >
       <div>
         <Navigation />
         <Switch>
@@ -67,7 +71,11 @@ function App() {
 
 function PageHome() {
   return (
-    <Layout.Default headline="Test2" description="Lorem" content={"..."} />
+    <Layout.Default
+      headline="Hello"
+      description="Component Collection"
+      content={"..."}
+    />
   );
 }
 
